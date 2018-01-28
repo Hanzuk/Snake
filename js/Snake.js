@@ -57,6 +57,10 @@ class Snake {
          let d = dist(this.posX, this.posY, this.body[i].x, this.body[i].y)
          if(d < 1) {
             noLoop()
+            swal({
+               title: "¡Oops!",
+               text: "Has perdido."
+            })
          }
       }
    }
