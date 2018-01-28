@@ -2,15 +2,15 @@ class Snake {
    constructor() {
       this.posX = 0
       this.posY = 0
-      this.xSpeed = 0
-      this.ySpeed = 0
+      this.xDir = 0
+      this.yDir = 0
       this.snakeSize = 1
       this.body = []
    }
 
    direction(x, y) {
-      this.xSpeed = x
-      this.ySpeed = y
+      this.xDir = x
+      this.yDir = y
    }
 
    move() {
@@ -25,8 +25,8 @@ class Snake {
       //aumentó y luego se vuelve a actualizar.
       this.body[this.snakeSize - 1] = createVector(this.posX, this.posY)
       //Se actualiza la posición.
-      this.posX += this.xSpeed * 20
-      this.posY += this.ySpeed * 20
+      this.posX += this.xDir * 20
+      this.posY += this.yDir * 20
       //Restringe un valor entre un valor mínimo y máximo.
       this.posX = constrain(this.posX, 0, (width - 20))
       this.posY = constrain(this.posY, 0, (height - 20))
@@ -44,11 +44,20 @@ class Snake {
       //Calcula la distancia entre dos puntos. (La posición que viene o un cuadro más adelante con
       //la posición de la comida).
       let d = dist(this.posX, this.posY, pos.x, pos.y)
-      if(d <= 1) {
+      if(d < 1) {
          this.snakeSize++
          return true
       } else {
          return false
+      }
+   }
+
+   selfFood() {
+      for(let i = 0; i < this.body.length - 1; i++) {
+         let d = dist(this.posX, this.posY, this.body[i].x, this.body[i].y)
+         if(d < 1) {
+            noLoop()
+         }
       }
    }
 }

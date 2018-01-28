@@ -10,12 +10,13 @@ function setup() {
 
 function draw() {
    background(51)
-   snake.move()
-   snake.show()
-
    if(snake.eatFood(food)) {
       generateFood()
-   }
+	}
+	
+	snake.selfFood()
+	snake.move()
+   snake.show()
 
    fill(62, 198, 7)
    rect(food.x, food.y, 20, 20)
