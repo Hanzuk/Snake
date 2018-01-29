@@ -54,6 +54,9 @@ class Snake {
       fill(255)
       //Recorre y dibuja los cuadros (Cuerpo).
       for(let i = 0; i < this.body.length; i++) {
+         if(i == this.body.length - 1) {
+            fill('#ef233c')
+         }
          rect(this.body[i].x, this.body[i].y, 20, 20)
       }
    }
@@ -76,10 +79,38 @@ class Snake {
          if(d < 1) {
             noLoop()
             swal({
-               title: "¡Oops!",
-               text: "Has perdido."
-            })
+               title: "¡Has perdido!",
+               text: "¿Quieres jugar de nuevo?",
+               buttons: {
+						cancel: {
+							text: "No",
+							value: null,
+							visible: true,
+							closeModal: true
+						},
+						confirm: {
+							text: "Si",
+							value: true,
+							visible: true,
+							closeModal: true
+						}
+					}
+				}).then((ok) => {
+					if(ok) {
+						this.reset()
+					}
+				})
          }
       }
-   }
+	}
+	
+	reset() {
+		this.posX = 0
+      this.posY = 0
+      this.xDir = 0
+      this.yDir = 0
+      this.snakeSize = 1
+		this.body = []
+		loop()
+	}
 }
