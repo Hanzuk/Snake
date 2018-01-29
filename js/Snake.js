@@ -1,7 +1,7 @@
 class Snake {
    constructor() {
-      this.posX = 0
-      this.posY = 0
+      this.posX = 300
+      this.posY = 300
       this.xDir = 0
       this.yDir = 0
       this.snakeSize = 1
@@ -105,8 +105,8 @@ class Snake {
 	}
 	
 	reset() {
-		this.posX = 0
-      this.posY = 0
+		this.posX = 300
+      this.posY = 300
       this.xDir = 0
       this.yDir = 0
       this.snakeSize = 1
