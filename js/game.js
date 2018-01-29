@@ -9,7 +9,7 @@ function setup() {
 }
 
 function draw() {
-   background(51)
+   background('#20232a')
    if(snake.eatFood(food)) {
       generateFood()
 	}
@@ -18,7 +18,7 @@ function draw() {
 	snake.move()
    snake.show()
 
-   fill(62, 198, 7)
+   fill('#20bf55')
    rect(food.x, food.y, 20, 20)
 }
 
