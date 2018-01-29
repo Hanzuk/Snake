@@ -9,8 +9,26 @@ class Snake {
    }
 
    direction(x, y) {
+      let lastX = this.xDir
+      let lastY = this.yDir
       this.xDir = x
       this.yDir = y
+      //Moviéndose hacia arriba y queriendo ir hacia abajo.
+      if(lastY == -1 && y == 1) {
+         this.yDir = -1
+      }
+      //Moviéndose hacia la derecha y queriendo ir hacia la izquierda.
+      if(lastX == 1 && x == -1) {
+         this.xDir = 1
+      }
+      //Moviéndose hacia abajo y queriendo ir hacia arriba.
+      if(lastY == 1 && y == -1) {
+         this.yDir = 1
+      }
+      //Moviéndose hacia la izquierda y queriendo ir hacia la derecha.
+      if(lastX == -1 && x == 1) {
+         this.xDir = -1
+      }
    }
 
    move() {
